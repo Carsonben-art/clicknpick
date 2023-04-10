@@ -4,6 +4,7 @@ import { DeleteOutline } from "@material-ui/icons";
 import { productRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Button,Flex } from "@chakra-ui/react";
 
 export default function ProductList() {
   const [data, setData] = useState(productRows);
@@ -11,9 +12,9 @@ export default function ProductList() {
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
   };
-
+  
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "id", headerName: "ID", width: 100 },
     {
       field: "product",
       headerName: "Product",
@@ -60,6 +61,10 @@ export default function ProductList() {
 
   return (
     <div className="productList">
+      <Flex justifyContent="right" padding="1rem">
+        <Button background="green.400" color="#ffffff"><Link to="/newproduct">Create New</Link></Button>
+      </Flex>
+      
       <DataGrid
         rows={data}
         disableSelectionOnClick

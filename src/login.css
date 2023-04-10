@@ -1,0 +1,17 @@
+
+Input{
+    background-color: #a19e9e;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    padding: 0.5rem;
+}
+Button{
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: green;
+    border-radius: 10px;
+    border: none;
+}
