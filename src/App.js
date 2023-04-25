@@ -6,7 +6,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import ProductList from "./pages/productList/ProductList";
 import Product from "./pages/product/Product";
-import NewProduct from "./pages/newProduct/NewProduct";
+// import NewProduct from "./pages/newProduct/NewProduct";
+import AddProduct from "./pages/newProduct/addProduct";
 import { ChakraProvider } from '@chakra-ui/react'
 function App() {
   return (
@@ -27,8 +28,8 @@ function App() {
           <Route path="/product/:productId">
             <Product />
           </Route>
-          <Route path="/newproduct">
-            <NewProduct />
+          <Route path="/addProduct">
+           <AddProduct />
           </Route>
         </Switch>
       </div>

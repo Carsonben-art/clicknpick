@@ -62,7 +62,9 @@ export default function ProductList() {
   return (
     <div className="productList">
       <Flex justifyContent="right" padding="1rem">
-        <Button background="green.400" color="#ffffff"><Link to="/newproduct">Create New</Link></Button>
+      <Link to="/addProduct">
+          <Button className="productAddButton">Create</Button>
+        </Link>
       </Flex>
       
       <DataGrid
