@@ -1,40 +1,59 @@
 import "./featuredInfo.css";
+import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
+import { useEffect, useState } from "react";
+import { userRequest } from "../../requestMethods";
 
-import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
-import CategoryIcon from '@mui/icons-material/Category';
 export default function FeaturedInfo() {
+  const [income, setIncome] = useState([]);
+  const [perc, setPerc] = useState(0);
+
+  useEffect(() => {
+    const getIncome = async () => {
+      try {
+        const res = await userRequest.get("orders/income");
+        setIncome(res.data);
+        setPerc((res.data[1].total * 100) / res.data[0].total - 100);
+      } catch {}
+    };
+    getIncome();
+  }, []);
+
   return (
     <div className="featured">
       <div className="featuredItem">
-        <span className="featuredTitle">Order</span>
+        <span className="featuredTitle">Revenue</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">324</span>
+          <span className="featuredMoney">${income[1]?.total}</span>
           <span className="featuredMoneyRate">
-             <MilitaryTechIcon  className="featuredIcon positive"/>
+            %{Math.floor(perc)}{" "}
+            {perc < 0 ? (
+              <ArrowDownward className="featuredIcon negative" />
+            ) : (
+              <ArrowUpward className="featuredIcon" />
+            )}
           </span>
         </div>
-        <span className="featuredSub">Total Orders Available</span>
+        <span className="featuredSub">Compared to last month</span>
       </div>
       <div className="featuredItem">
-        <span className="featuredTitle">Total Sales</span>
+        <span className="featuredTitle">Sales</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">Ksh 423,415</span>
+          <span className="featuredMoney">$4,415</span>
           <span className="featuredMoneyRate">
-             <MonetizationOnIcon className="featuredIcon negative"/>
+            -1.4 <ArrowDownward className="featuredIcon negative" />
           </span>
         </div>
-        <span className="featuredSub">Total Revenue</span>
+        <span className="featuredSub">Compared to last month</span>
       </div>
       <div className="featuredItem">
-        <span className="featuredTitle">Products</span>
+        <span className="featuredTitle">Cost</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">525</span>
+          <span className="featuredMoney">$2,225</span>
           <span className="featuredMoneyRate">
-             <CategoryIcon className="featuredIcon"/>
+            +2.4 <ArrowUpward className="featuredIcon" />
           </span>
         </div>
-        <span className="featuredSub">Total Posted Products</span>
+        <span className="featuredSub">Compared to last month</span>
       </div>
     </div>
   );

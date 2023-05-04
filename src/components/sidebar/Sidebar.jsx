@@ -3,6 +3,7 @@ import {
   LineStyle,
   Timeline,
   TrendingUp,
+  PermIdentity,
   Storefront,
   AttachMoney,
   BarChart,
@@ -40,19 +41,24 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
-            
+          <Link to="/newproduct" className="link">
+              <li className="sidebarListItem">
+                <Storefront className="sidebarIcon" />
+                New Product
+              </li>
+            </Link>
             <Link to="/products" className="link">
               <li className="sidebarListItem">
                 <Storefront className="sidebarIcon" />
                 Products
               </li>
             </Link>
-            <Link to="/" className="link">
+            {/* <Link to="/" className="link">
               <li className="sidebarListItem">
                 <Storefront className="sidebarIcon" />
                 Orders
               </li>
-            </Link>
+            </Link> */}
             <li className="sidebarListItem">
               <AttachMoney className="sidebarIcon" />
               Transactions
