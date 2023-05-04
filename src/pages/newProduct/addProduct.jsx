@@ -86,6 +86,7 @@ export default function AddProduct(){
               getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                 const product = ({...inputs, img:downloadURL, desc});
                 addProduct(product, dispatch);
+                window.location.href = '/products';
               });
             }
         );
